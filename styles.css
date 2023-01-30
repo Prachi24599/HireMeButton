@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* original content */
+.btn{
+    background-color: tomato;
+    color: white;
+    padding: 0.8rem 2.3rem;
+    box-shadow: 5px 5px 7px 0 gray;
+    font-size: 18px;
+    position: relative;
+    z-index: 1;
+}
+/* If we want to add some content before original content then we can use ::before sudo selector*/
+.btn::before{
+    content: "";
+    background-color: black;
+    /* we want to fill the complete div, means we want to overlap it*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: scaleX(0);
+    transform-origin: left; /*transition will start from left */
+    transition: all 1s; /*adding transition time to smooth the transition */
+    z-index: -1;
+}
+/*we want to show the slider that we created in btn::before */
+.btn:hover::before{
+    cursor: pointer;
+    transform: scaleX(1);
+}
